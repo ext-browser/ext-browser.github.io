@@ -20,6 +20,7 @@ Below are supported `extensionComponent`
 
 - background
 - content
+- contentWindow
 - devtools
 - popup
 - sidepanel
@@ -50,3 +51,52 @@ sendMessage("popup", "EXTENSION_SETTINGS_UPDATED", { theme: "dark" })
 
 
 ## contentWindow
+
+
+The Messaging library empowers seamless communication within your browser extension. However, content scripts injected with ExecutionWorld.ISOLATED present a unique challenge due to their separation from the main window environment. To bridge this gap, the library provides two communication methods:
+
+
+### Bridging the Gap with `onWindowMessage`
+
+- #### Content Script (Isolated)
+    - Listen for messages from the main window using `onWindowMessage`.
+    - Forward it to other extension component using `sendMessage`.
+    - Send message to window content using `sendToWindow`.
+
+```js title="./content-script-isolated.js"
+import { sendMessage, sendToWindow, onMessage, onWindowMessage } from "@ext-browser/messaging/content";
+
+// Send data to the main content script (ExecutionWorld.MAIN)
+sendToWindow("EVENT", { key: true });
+
+// Listen for events from the main content script
+onWindowMessage("BUTTON_CLICKED", (data) => {
+    // Forward the event to other components (e.g., popup)
+    sendMessage("popup", "BUTTON_CLICKED", data);
+});
+```
+
+- #### Content Script (Main)
+    - Listen for messages originating from isolated content scripts using `onMessage`.
+    - Send message to isolated content using `sendMessage`.
+
+
+```js title="./content-script-main.js"
+import { sendMessage, onMessage } from "@ext-browser/messaging/contentWindow";
+
+// Listen for messages from isolated content scripts
+onMessage("EVENT", (data) => {
+    // Process the data or forward it to other components
+    console.log("Received event from isolated script:", data);
+});
+
+document.getElementById("btn").addEventListener("click", () => {
+    sendMessage("popup", "BUTTON_CLICKED", { btn: "my-button" });
+});
+```
+
+:::tip[Remember]
+
+**Security:** Be mindful of security implications when relaying messages through the main content script. Ensure proper data validation and sanitization to prevent potential vulnerabilities.
+
+:::
