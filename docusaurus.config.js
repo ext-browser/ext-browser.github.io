@@ -10,7 +10,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   title: 'EXT Browser',
   tagline: 'Browser Extension Development Made Easy',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.svg',
 
   // Set the production url of your site here
   url: 'https://ext-browser.github.io/',
@@ -49,7 +49,7 @@ const config = {
             [require('@docusaurus/remark-plugin-npm2yarn'), {sync: true}],
           ],
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/ext-browser/ext-browser.github.io/tree/main/',
         },
         theme: {
           customCss: './src/css/custom.css',
