@@ -20,7 +20,7 @@ Below are supported `extensionComponent`
 
 - background
 - content
-- contentWindow
+- contentWindow (With Special Handling See Below)
 - devtools
 - popup
 - sidepanel
@@ -58,7 +58,7 @@ The Messaging library empowers seamless communication within your browser extens
 
 ### Bridging the Gap with `onWindowMessage`
 
-- #### Content Script (Isolated)
+- ### Content Script (Isolated)
     - Listen for messages from the main window using `onWindowMessage`.
     - Forward it to other extension component using `sendMessage`.
     - Send message to window content using `sendToWindow`.
@@ -76,7 +76,7 @@ onWindowMessage("BUTTON_CLICKED", (data) => {
 });
 ```
 
-- #### Content Script (Main)
+- ### Content Script (Main)
     - Listen for messages originating from isolated content scripts using `onMessage`.
     - Send message to isolated content using `sendMessage`.
 
