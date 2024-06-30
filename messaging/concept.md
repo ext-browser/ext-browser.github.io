@@ -33,8 +33,8 @@ Registers a listener function (callback) that is invoked whenever a message with
 ```js
 import { onMessage } from "@ext-browser/messaging/popup";
 
-onMessage("EXTENSION_SETTINGS_UPDATED", (data) => {
-    console.log(data);
+onMessage("EXTENSION_SETTINGS_UPDATED", async (data) => {
+    return { settings: true };
 })
 
 ```
@@ -45,7 +45,7 @@ Sends a message to a specific component identified by recipient. The eventName a
 ```js
 import { sendMessage } from "@ext-browser/messaging/background";
 
-sendMessage("popup", "EXTENSION_SETTINGS_UPDATED", { theme: "dark" })
+const response = await sendMessage("popup", "EXTENSION_SETTINGS_UPDATED", { theme: "dark" })
 
 ```
 
