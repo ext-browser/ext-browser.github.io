@@ -16,7 +16,11 @@ sendMessage("EVENT_NAME", { hello: "world" });
 ## Parameters
 
 ### `recipient` (String)
-- The identifier of the component you want to send the message to `background`, `content`, `devtools`, `popup`, `sidepanel`
+- The identifier of the component you want to send the message to `background`, `content:{tabId}`, `devtools:{tabId}`, `popup`, `sidepanel`
+
+Ex:
+- `content:1234` // Send Message to content script in tab id 1234
+- `content:active` // Use `active` tab id so it will send data to active tab
 
 ### `eventName` (String)
 - The name assigned to the message, used for categorization and routing within the Messaging library.
