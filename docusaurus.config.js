@@ -59,10 +59,12 @@ const config = {
   ],
 
   plugins: [
-    "@docusaurus/plugin-google-gtag",
-    {
-      trackingID: "G-C7RP0SNMB7",
-    },
+    [
+      '@docusaurus/plugin-google-gtag',
+      {
+        trackingID: 'G-C7RP0SNMB7',
+      },
+    ],
   ],
 
   themeConfig:
