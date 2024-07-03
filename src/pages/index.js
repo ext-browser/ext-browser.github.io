@@ -14,10 +14,10 @@ export default function Home() {
       <main className="home-page-wrapper">
         <img className="logo" src="/img/logo.svg" alt="logo" />
         <div className="logo-title">
-          EXT Broswer
+          EXT Browser
         </div>
         <div className="logo-subtitle">
-          Broswer Extension Library
+          Browser Extension Library
         </div>
       </main>
     </Layout>

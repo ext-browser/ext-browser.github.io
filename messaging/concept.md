@@ -19,9 +19,9 @@ import { onMessage, sendMessage } from "@ext-browser/messaging/{{extensionCompon
 Below are supported `extensionComponent`
 
 - `background`
-- `content:{tabId}` (Broswer Tab Id)
+- `content:{tabId}` (Browser Tab Id)
 - `contentWindow` (With Special Handling See Below)
-- `devtools:{tabId}` (Broswer Tab Id)
+- `devtools:{tabId}` (Browser Tab Id)
 - `popup`
 - `sidepanel`
 
