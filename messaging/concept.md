@@ -18,12 +18,12 @@ import { onMessage, sendMessage } from "@ext-browser/messaging/{{extensionCompon
 
 Below are supported `extensionComponent`
 
-- background
-- content
-- contentWindow (With Special Handling See Below)
-- devtools
-- popup
-- sidepanel
+- `background`
+- `content:{tabId}` (Broswer Tab Id)
+- `contentWindow` (With Special Handling See Below)
+- `devtools:{tabId}` (Broswer Tab Id)
+- `popup`
+- `sidepanel`
 
 Each supported component provides two essential functions for communication:
 
